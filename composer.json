@@ -1,0 +1,27 @@
+{
+    "name": "jmnn/map",
+    "description": "Package map",
+    "type": "laravel",
+    "autoload": {
+        "psr-4": {
+            "Jmnn\\Map\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "jmnn",
+            "email": "kopopi593@gmail.com"
+        }
+    ],
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Jmnn\\Map\\MapServiceProvider"
+            ],
+            "aliases": {
+                "JMap" : "Jmnn\\Map\\MapFacade"
+            }
+        }
+    }
+}
