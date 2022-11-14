@@ -20,7 +20,7 @@
                 "Jmnn\\Map\\MapServiceProvider"
             ],
             "aliases": {
-                "JMap" : "Jmnn\\Map\\MapFacade"
+                "JMap" : "Jmnn\\Map\\Facade\\MapFacade"
             }
         }
     }
