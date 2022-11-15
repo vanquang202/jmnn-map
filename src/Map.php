@@ -33,14 +33,15 @@ class Map implements MapInterface
         return false;
     }
 
-    private function __convertString($data)
+    private function __convertString($data,$flagSlug = true)
     {
-        return Str::squish($data);
+        if($flagSlug) return Str::squish(Str::slug($data, " "));
+        return  Str::squish($data);
     }
 
     private function __match($search , $str)
     {
-
+        $str = $this->__convertString($str);
         $ex = explode(",",$search);
         $flag = false;
         $patternString = $this->__cvPatternString($ex);
@@ -48,7 +49,6 @@ class Map implements MapInterface
         $pattern = '/('.$patternString.')/i';
 
         $searchNew = $this->__cvPatternNewString($ex);
-
         if(trim($searchNew) == "") $flag = true;
         return (bool) preg_match($pattern,$str) ?: ($flag ? false :  $this->__match($searchNew , $str));
 
@@ -65,7 +65,7 @@ class Map implements MapInterface
                 if(count($data) > 1) return implode(" ",$data);
                 return "Default";
             },$array));
-            return $this->__convertString("$result");
+            return $this->__convertString("$result",false);
 
         },$ex));
 
